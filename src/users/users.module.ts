@@ -9,15 +9,14 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
+  controllers: [UsersController],
   providers: [
     UsersService,
     AuthService,
-    ,
     {
       provide: APP_INTERCEPTOR,
       useClass: CurrentUserInterceptor,
     },
   ],
-  controllers: [UsersController],
 })
 export class UsersModule {}
